@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/rinat1313/source_html/internal/apitypes"
+	"github.com/rinat1313/source_html/internal/logging"
 )
 
 type Server struct {
@@ -21,6 +22,7 @@ func NewServer(storage *StorageClient, orch *Orchestrator) *Server {
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /healthz", s.handleHealthz)
+	mux.HandleFunc("GET /api/v1/search/logs", s.handleLogs)
 	mux.HandleFunc("POST /api/v1/search/runs", s.handleCreateRun)
 	mux.HandleFunc("GET /api/v1/search/runs/{id}", s.handleGetRun)
 	mux.HandleFunc("GET /api/v1/search/runs/{id}/results", s.handleRunResults)
@@ -43,6 +45,22 @@ func (s *Server) handleHealthz(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
+}
+
+func (s *Server) handleLogs(w http.ResponseWriter, r *http.Request) {
+	limit := 200
+	if raw := r.URL.Query().Get("limit"); raw != "" {
+		if n, err := strconv.Atoi(raw); err == nil && n > 0 {
+			limit = n
+			if limit > 1000 {
+				limit = 1000
+			}
+		}
+	}
+	writeJSON(w, http.StatusOK, map[string]any{
+		"service": "search",
+		"lines":   logging.Recent(limit),
+	})
 }
 
 type createRunRequest struct {

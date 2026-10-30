@@ -68,6 +68,7 @@
 | POST | `/api/search/runs` | Запустить прогон. Тело: `{ "profile_id": "uuid" }` **или** `{ "config": { ... } }` без сохранения профиля |
 | GET | `/api/search/runs/{id}` | Статус прогона |
 | GET | `/api/search/runs/{id}/results` | Результаты с пагинацией |
+| GET | `/api/search/logs?limit=200` | Последние строки журнала сервиса search (буфер в памяти) |
 
 Ответ прогона (основные поля): `id`, `status` (`pending`, `running`, `completed`, `failed`), `error_message`, `law`, `limit_n`, `matched_saved`, `created_at`, `finished_at`.
 

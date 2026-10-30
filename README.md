@@ -30,6 +30,15 @@ curl -s http://localhost:8080/healthz
 curl -s http://localhost:8080/config.json
 ```
 
+Логи поиска (после ошибки «ЕИС недоступна»):
+
+```bash
+curl -s 'http://localhost:8080/api/search/logs?limit=100'
+docker compose logs search --tail=100
+```
+
+В UI: вкладка **Поиск** → блок **Журнал сервиса поиска** → **Обновить лог**.
+
 ### Отладка API напрямую (не для прод)
 
 Раскомментируйте или добавьте в `docker-compose.yml` для сервисов `storage` / `search`:

@@ -109,6 +109,12 @@
         "/runs/" + encodeURIComponent(runId) + "/results" + (qs ? "?" + qs : "")
       );
     },
+    logs(limit) {
+      const q = new URLSearchParams();
+      if (limit != null) q.set("limit", String(limit));
+      const qs = q.toString();
+      return request(cfg.searchPrefix, "/logs" + (qs ? "?" + qs : ""));
+    },
   };
 
   window.EisApi = { storage, search, cfg };

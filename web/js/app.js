@@ -48,6 +48,8 @@
     resultsEmpty: document.getElementById("resultsEmpty"),
     runResultsList: document.getElementById("runResultsList"),
     btnLoadMoreResults: document.getElementById("btnLoadMoreResults"),
+    btnRefreshLogs: document.getElementById("btnRefreshLogs"),
+    searchLogs: document.getElementById("searchLogs"),
     filterLaw: document.getElementById("filterLaw"),
     filterQuery: document.getElementById("filterQuery"),
     btnRefreshPurchases: document.getElementById("btnRefreshPurchases"),
@@ -488,7 +490,26 @@
       run.error_message &&
       run.error_message.indexOf(EIS_MSG) !== -1;
     show(el.eisBanner, showBanner);
+    if (showBanner || status === "failed") {
+      refreshLogs();
+    }
     el.btnRunSearch.disabled = status === "running" || status === "pending";
+  }
+
+  async function refreshLogs() {
+    if (!el.searchLogs) return;
+    try {
+      const data = await api.search.logs(200);
+      const lines = data.lines || [];
+      el.searchLogs.textContent = lines.length
+        ? lines.join("\n")
+        : "Пока нет записей в буфере логов.";
+      el.searchLogs.scrollTop = el.searchLogs.scrollHeight;
+    } catch (err) {
+      el.searchLogs.textContent =
+        "Не удалось загрузить лог: " + (err.message || "ошибка") +
+        "\nПроверьте: docker compose logs search --tail=100";
+    }
   }
 
   async function fetchRunResults(append) {
@@ -591,6 +612,7 @@
       "<li>Выберите профиль, вкладка <strong>Поиск</strong>, кнопка <strong>Поиск</strong>.</li>" +
       "<li>Статус и «Загружено X / лимит Y» обновляются во время прогона.</li>" +
       "<li>Результаты — карточками, по 10; <strong>Загрузить ещё 10</strong> — следующая порция.</li>" +
+      "<li><strong>Обновить лог</strong> — журнал сервиса поиска; также <code>GET /api/search/logs</code> или <code>docker compose logs search</code>.</li>" +
       "</ul>" +
       "<h3>Закупки в БД</h3>" +
       "<ul>" +
@@ -599,7 +621,7 @@
       "<li><strong>Загрузить ещё</strong> — следующая страница списка.</li>" +
       "</ul>" +
       "<h3>ЕИС недоступна</h3>" +
-      "<p>Баннер <strong>ЕИС недоступна</strong> и статус «ошибка» — сбой связи с ЕИС. Уже сохранённые закупки остаются; вкладка <strong>Закупки в БД</strong> работает.</p>" +
+      "<p>Баннер <strong>ЕИС недоступна</strong> и статус «ошибка» — сбой связи с ЕИС (часто с краткой причиной). Смотрите журнал на вкладке Поиск. Уже сохранённые закупки остаются; вкладка <strong>Закупки в БД</strong> работает.</p>" +
       "<h3>Безопасность</h3>" +
       "<p>v1 без входа в систему. Используйте только во внутренней сети. Доступ к ЕИС — в настройках сервера (.env), не в профиле.</p>";
   }
@@ -623,6 +645,9 @@
   el.tabSearch.addEventListener("click", () => activateTab("search"));
   el.tabPurchases.addEventListener("click", () => activateTab("purchases"));
   el.btnRunSearch.addEventListener("click", runSearch);
+  if (el.btnRefreshLogs) {
+    el.btnRefreshLogs.addEventListener("click", refreshLogs);
+  }
   el.btnLoadMoreResults.addEventListener("click", () => fetchRunResults(true));
   el.btnRefreshPurchases.addEventListener("click", () => loadPurchases(true));
   el.btnLoadMorePurchases.addEventListener("click", () => loadPurchases(false));

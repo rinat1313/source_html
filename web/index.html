@@ -116,6 +116,14 @@
           <div id="resultsEmpty" class="empty-state hidden">Результатов пока нет. Запустите поиск или дождитесь появления данных.</div>
           <ul class="purchase-list" id="runResultsList" aria-label="Результаты прогона"></ul>
           <button type="button" class="btn hidden" id="btnLoadMoreResults">Загрузить ещё 10</button>
+          <div class="logs-panel" id="logsPanel">
+            <div class="logs-toolbar">
+              <h3 class="logs-title">Журнал сервиса поиска</h3>
+              <button type="button" class="btn btn-sm" id="btnRefreshLogs">Обновить лог</button>
+            </div>
+            <p class="hint">Также: <code>docker compose logs search --tail=100</code></p>
+            <pre id="searchLogs" class="logs-pre" aria-live="polite">Нажмите «Обновить лог» после ошибки поиска.</pre>
+          </div>
         </div>
       </section>
 

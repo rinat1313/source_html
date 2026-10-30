@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"log/slog"
 	"net"
 	"strings"
 
@@ -53,7 +54,8 @@ func (o *Orchestrator) RunSearch(ctx context.Context, runID string, cfg apitypes
 			cards, cerr = o.Client223.Collect(ctx, cfg.EIS223)
 		}
 		if cerr != nil {
-			if isTransportError(cerr) {
+			slog.Error("eis collect failed", "law", law, "run_id", runID, "err", cerr)
+			if isEisAccessError(cerr) {
 				eisFailed = true
 				eisErr = cerr
 			}
@@ -77,13 +79,19 @@ func (o *Orchestrator) RunSearch(ctx context.Context, runID string, cfg apitypes
 	finished := true
 	if eisFailed {
 		msg := eisUnavailableMsg
+		if eisErr != nil {
+			detail := sanitizeErr(eisErr.Error())
+			if detail != "" {
+				msg = eisUnavailableMsg + ": " + detail
+			}
+			slog.Error("search marked eis unavailable", "run_id", runID, "err", eisErr)
+		}
 		status := "failed"
 		_, _ = o.Storage.PatchRun(ctx, runID, map[string]any{
 			"status":        status,
 			"error_message": msg,
 			"finished":      finished,
 		})
-		_ = eisErr
 		return
 	}
 	status := "completed"
@@ -93,7 +101,7 @@ func (o *Orchestrator) RunSearch(ctx context.Context, runID string, cfg apitypes
 	})
 }
 
-func isTransportError(err error) bool {
+func isEisAccessError(err error) bool {
 	if err == nil {
 		return false
 	}
@@ -102,12 +110,30 @@ func isTransportError(err error) bool {
 		return true
 	}
 	msg := strings.ToLower(err.Error())
-	for _, sub := range []string{"tls", "connection refused", "timeout", "no such host", "soap http", "223 http"} {
+	for _, sub := range []string{
+		"tls", "certificate", "x509", "connection refused", "timeout", "no such host",
+		"soap http", "223 http", "not configured", "soap fault", "i/o timeout",
+		"network is unreachable", "connection reset", "eof",
+	} {
 		if strings.Contains(msg, sub) {
 			return true
 		}
 	}
 	return false
+}
+
+func sanitizeErr(raw string) string {
+	s := strings.TrimSpace(raw)
+	lower := strings.ToLower(s)
+	for _, secret := range []string{"password", "authorization", "bearer ", "private"} {
+		if strings.Contains(lower, secret) {
+			return "скрыто (есть чувствительные данные)"
+		}
+	}
+	if len(s) > 400 {
+		return s[:400] + "…"
+	}
+	return s
 }
 
 func ParseConfig(raw json.RawMessage) (apitypes.SearchConfig, error) {
