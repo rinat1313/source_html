@@ -2,6 +2,8 @@
 
 Сервисы **storage**, **search** и **ui** + PostgreSQL. Материалы по интеграции с ЕИС — в [`info/`](./info/).
 
+**Руководство пользователя:** [docs/user-guide.md](./docs/user-guide.md) · **HTTP API:** [docs/api.md](./docs/api.md)
+
 ## Безопасность v1
 
 - **Trust network:** HTTP API **без аутентификации** (осознанное решение v1). Разворачивайте только во внутреннем или доверенном периметре.
