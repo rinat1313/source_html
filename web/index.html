@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Поиск закупок ЕИС</title>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="/config.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>Поиск закупок ЕИС</h1>
+    <div class="header-actions">
+      <button type="button" class="btn" id="btnHelp" aria-haspopup="dialog">Справка</button>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="panel" aria-label="Профили поиска">
+      <div class="panel-header">
+        <h2>Профили</h2>
+        <button type="button" class="btn btn-primary btn-sm" id="btnNewProfile">Создать</button>
+      </div>
+      <div id="profilesEmpty" class="empty-state hidden">Нет профилей. Создайте первый профиль поиска.</div>
+      <div id="profilesError" class="error-state hidden" role="alert"></div>
+      <ul class="profile-list" id="profileList" aria-label="Список профилей"></ul>
+    </aside>
+
+    <div class="main-panel">
+      <div class="tab-bar" role="tablist" aria-label="Разделы">
+        <button type="button" class="tab-btn" role="tab" id="tabSettings" aria-selected="true" aria-controls="panelSettings">Настройки</button>
+        <button type="button" class="tab-btn" role="tab" id="tabSearch" aria-selected="false" aria-controls="panelSearch">Поиск</button>
+        <button type="button" class="tab-btn" role="tab" id="tabPurchases" aria-selected="false" aria-controls="panelPurchases">Закупки в БД</button>
+      </div>
+
+      <section class="tab-panel" id="panelSettings" role="tabpanel" aria-labelledby="tabSettings" aria-hidden="false">
+        <div id="settingsEmpty" class="empty-state">Выберите профиль слева или создайте новый.</div>
+        <form id="profileForm" class="form-grid hidden" novalidate>
+          <div class="form-row">
+            <label for="profileName">Название профиля</label>
+            <input type="text" id="profileName" name="name" required autocomplete="off">
+          </div>
+          <div class="form-row">
+            <label for="profileLaw">Закон</label>
+            <select id="profileLaw" name="law">
+              <option value="44">44-ФЗ</option>
+              <option value="223">223-ФЗ</option>
+              <option value="both">44 и 223</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="profileKeywords">Ключевые слова (по одному в строке, фильтр AND)</label>
+            <textarea id="profileKeywords" name="keywords" rows="4" placeholder="например: медицина"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="profileLimit">Лимит сохранённых закупок</label>
+            <input type="number" id="profileLimit" name="limit" min="1" value="50" required>
+          </div>
+          <div class="form-section" id="sectionEis44">
+            <h3>Параметры ЕИС (44-ФЗ)</h3>
+            <div class="form-row">
+              <label for="eis44OrgRegion">Регион организации (КЛАДР)</label>
+              <input type="text" id="eis44OrgRegion" name="org_region" autocomplete="off">
+            </div>
+            <div class="form-row">
+              <label for="eis44DocTypes">Типы документов (через запятую)</label>
+              <input type="text" id="eis44DocTypes" name="document_types" placeholder="извещение, контракт">
+            </div>
+            <div class="form-row">
+              <label for="eis44PeriodFrom">Период размещения — с (YYYY-MM-DD)</label>
+              <input type="date" id="eis44PeriodFrom" name="period_from">
+            </div>
+            <div class="form-row">
+              <label for="eis44PeriodTo">Период размещения — по</label>
+              <input type="date" id="eis44PeriodTo" name="period_to">
+            </div>
+          </div>
+          <div class="form-section" id="sectionEis223">
+            <h3>Параметры ЕИС (223-ФЗ)</h3>
+            <div class="form-row">
+              <label for="eis223EntityTypes">Типы сущностей (через запятую)</label>
+              <input type="text" id="eis223EntityTypes" name="entity_types" placeholder="purchaseNotice, contract">
+            </div>
+            <div class="form-row">
+              <label for="eis223Region">Регион (при необходимости)</label>
+              <input type="text" id="eis223Region" name="region223">
+            </div>
+            <div class="form-row">
+              <label for="eis223PeriodFrom">Период — с</label>
+              <input type="date" id="eis223PeriodFrom" name="period223_from">
+            </div>
+            <div class="form-row">
+              <label for="eis223PeriodTo">Период — по</label>
+              <input type="date" id="eis223PeriodTo" name="period223_to">
+            </div>
+          </div>
+          <p id="profileFormError" class="inline-error hidden" role="alert"></p>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btnSaveProfile">Сохранить</button>
+            <button type="button" class="btn btn-danger" id="btnDeleteProfile">Удалить</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="tab-panel" id="panelSearch" role="tabpanel" aria-labelledby="tabSearch" aria-hidden="true">
+        <div id="searchEmpty" class="empty-state">Выберите профиль для запуска поиска.</div>
+        <div id="searchPanel" class="hidden">
+          <div id="eisBanner" class="banner hidden" role="alert">ЕИС недоступна</div>
+          <div class="search-toolbar">
+            <button type="button" class="btn btn-primary" id="btnRunSearch">Поиск</button>
+            <p class="run-status" id="runStatusText" aria-live="polite"></p>
+            <p class="progress-indicator" id="runProgress" aria-live="polite"></p>
+          </div>
+          <div id="resultsError" class="error-state hidden" role="alert"></div>
+          <div id="resultsEmpty" class="empty-state hidden">Результатов пока нет. Запустите поиск или дождитесь появления данных.</div>
+          <ul class="purchase-list" id="runResultsList" aria-label="Результаты прогона"></ul>
+          <button type="button" class="btn hidden" id="btnLoadMoreResults">Загрузить ещё 10</button>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="panelPurchases" role="tabpanel" aria-labelledby="tabPurchases" aria-hidden="true">
+        <div class="filters-row">
+          <select id="filterLaw" aria-label="Фильтр по закону">
+            <option value="">Все законы</option>
+            <option value="44">44-ФЗ</option>
+            <option value="223">223-ФЗ</option>
+          </select>
+          <input type="search" id="filterQuery" placeholder="Поиск по названию" aria-label="Поиск по названию">
+          <button type="button" class="btn btn-primary btn-sm" id="btnRefreshPurchases">Обновить</button>
+        </div>
+        <div id="purchasesError" class="error-state hidden" role="alert"></div>
+        <div class="split-purchases">
+          <div>
+            <div id="purchasesEmpty" class="empty-state hidden">В базе пока нет закупок.</div>
+            <ul class="purchase-list" id="purchasesList" aria-label="Список закупок"></ul>
+            <button type="button" class="btn hidden" id="btnLoadMorePurchases">Загрузить ещё</button>
+          </div>
+          <div id="purchaseDetailWrap" class="purchase-detail hidden" aria-live="polite">
+            <h3 id="purchaseDetailTitle"></h3>
+            <div id="purchaseDetailBody"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="helpModal" hidden role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="helpModalTitle">Справка</h2>
+        <button type="button" class="btn btn-sm" id="btnCloseHelp" aria-label="Закрыть">×</button>
+      </div>
+      <div class="modal-body" id="helpBody">
+        <p>Текст справки будет добавлен на этапе документации.</p>
+        <p>Кратко: создайте профиль, настройте параметры ЕИС и ключевые слова, нажмите «Поиск», просматривайте результаты и закупки в базе.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

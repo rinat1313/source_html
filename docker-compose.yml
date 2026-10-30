@@ -1,0 +1,110 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-eis}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: ${POSTGRES_DB:-eis}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations/001_init.up.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-eis} -d ${POSTGRES_DB:-eis}",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - eis_internal
+
+  storage:
+    build:
+      context: .
+      dockerfile: Dockerfile.storage
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      STORAGE_ADDR: ":8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    expose:
+      - "8081"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8081/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - eis_internal
+
+  search:
+    build:
+      context: .
+      dockerfile: Dockerfile.search
+    restart: unless-stopped
+    environment:
+      STORAGE_URL: ${STORAGE_URL:-http://storage:8081}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      SEARCH_ADDR: ":8082"
+      EIS_44_SOAP_URL: ${EIS_44_SOAP_URL:-}
+      EIS_SENDER_CODE: ${EIS_SENDER_CODE:-}
+      EIS_44_TLS_CERT: ${EIS_44_TLS_CERT:-}
+      EIS_44_TLS_KEY: ${EIS_44_TLS_KEY:-}
+      EIS_223_BASE_URL: ${EIS_223_BASE_URL:-}
+      EIS_223_LOGIN: ${EIS_223_LOGIN:-}
+      EIS_223_PASSWORD: ${EIS_223_PASSWORD:-}
+      EIS_DOWNLOAD_ALLOWLIST: ${EIS_DOWNLOAD_ALLOWLIST:-}
+    depends_on:
+      storage:
+        condition: service_healthy
+    expose:
+      - "8082"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8082/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - eis_internal
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    restart: unless-stopped
+    environment:
+      STORAGE_URL: ${STORAGE_URL:-http://storage:8081}
+      SEARCH_URL: ${SEARCH_URL:-http://search:8082}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      UI_ADDR: ":8080"
+      UI_WEB_ROOT: /app/web
+    ports:
+      - "${UI_PORT:-8080}:8080"
+    depends_on:
+      storage:
+        condition: service_healthy
+      search:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8080/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - eis_internal
+
+networks:
+  eis_internal:
+    driver: bridge
+
+volumes:
+  pgdata:

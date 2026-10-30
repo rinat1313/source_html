@@ -1,0 +1,22 @@
+# syntax=docker/dockerfile:1
+
+FROM golang:1.22-alpine AS build
+WORKDIR /src
+RUN apk add --no-cache ca-certificates
+COPY go.mod go.sum ./
+RUN go mod download
+COPY cmd/ui ./cmd/ui
+COPY internal ./internal
+COPY web ./web
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /out/ui ./cmd/ui
+
+FROM alpine:3.20
+RUN apk add --no-cache ca-certificates curl
+WORKDIR /app
+COPY --from=build /out/ui /app/ui
+COPY web /app/web
+EXPOSE 8080
+ENV UI_ADDR=:8080
+ENV UI_WEB_ROOT=/app/web
+USER nobody
+ENTRYPOINT ["/app/ui"]

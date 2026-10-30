@@ -1,0 +1,7 @@
+.git
+.cursor
+info
+logs
+.env
+**/*_test.go
+**/*.md
