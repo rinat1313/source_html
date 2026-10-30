@@ -31,11 +31,19 @@ func LoadConfig() Config {
 	if publicSearch == "" {
 		publicSearch = "/api/search"
 	}
+	storageUpstream := strings.TrimRight(strings.TrimSpace(os.Getenv("STORAGE_URL")), "/")
+	if storageUpstream == "" {
+		storageUpstream = "http://127.0.0.1:8081"
+	}
+	searchUpstream := strings.TrimRight(strings.TrimSpace(os.Getenv("SEARCH_URL")), "/")
+	if searchUpstream == "" {
+		searchUpstream = "http://127.0.0.1:8082"
+	}
 	return Config{
 		Addr:              addr,
 		WebRoot:           webRoot,
-		StorageUpstream:   strings.TrimRight(os.Getenv("STORAGE_URL"), "/"),
-		SearchUpstream:    strings.TrimRight(os.Getenv("SEARCH_URL"), "/"),
+		StorageUpstream:   storageUpstream,
+		SearchUpstream:    searchUpstream,
 		PublicStorageBase: strings.TrimRight(publicStorage, "/"),
 		PublicSearchBase:  strings.TrimRight(publicSearch, "/"),
 	}
