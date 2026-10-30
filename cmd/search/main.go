@@ -27,16 +27,22 @@ func main() {
 
 	httpClient := &http.Client{Timeout: 120 * time.Second}
 	if cfg.EIS44CertFile != "" && cfg.EIS44KeyFile != "" {
-		cert, err := tls.LoadX509KeyPair(cfg.EIS44CertFile, cfg.EIS44KeyFile)
-		if err != nil {
-			slog.Error("tls cert load failed", "err", err)
-			os.Exit(1)
-		}
-		httpClient.Transport = &http.Transport{
-			TLSClientConfig: &tls.Config{
-				Certificates: []tls.Certificate{cert},
-				MinVersion:   tls.VersionTLS12,
-			},
+		if _, errCert := os.Stat(cfg.EIS44CertFile); errCert != nil {
+			slog.Warn("EIS_44_TLS_CERT not found, mTLS skipped", "path", cfg.EIS44CertFile, "err", errCert)
+		} else if _, errKey := os.Stat(cfg.EIS44KeyFile); errKey != nil {
+			slog.Warn("EIS_44_TLS_KEY not found, mTLS skipped", "path", cfg.EIS44KeyFile, "err", errKey)
+		} else {
+			cert, err := tls.LoadX509KeyPair(cfg.EIS44CertFile, cfg.EIS44KeyFile)
+			if err != nil {
+				slog.Warn("tls cert load failed, mTLS skipped", "err", err)
+			} else {
+				httpClient.Transport = &http.Transport{
+					TLSClientConfig: &tls.Config{
+						Certificates: []tls.Certificate{cert},
+						MinVersion:   tls.VersionTLS12,
+					},
+				}
+			}
 		}
 	}
 
