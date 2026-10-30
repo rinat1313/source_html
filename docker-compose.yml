@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile.storage
     restart: unless-stopped
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: ${DATABASE_URL:-postgres://${POSTGRES_USER:-eis}:${POSTGRES_PASSWORD:-change-me}@postgres:5432/${POSTGRES_DB:-eis}?sslmode=disable}
       LOG_LEVEL: ${LOG_LEVEL:-info}
       STORAGE_ADDR: ":8081"
     depends_on:
