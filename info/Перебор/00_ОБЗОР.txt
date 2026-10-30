@@ -1,0 +1,356 @@
+ПЕРЕБОР ДОКУМЕНТОВ ЕИС — полный обзор (txt для git)
+============================================================
+
+Назначение папки: все материалы из info/ переведены в .txt
+(docx/pdf/xlsx/xsd/wsdl/md/txt → *.расширение.txt), имена 44-ФЗ
+с битой кодировкой восстановлены.
+
+Всего файлов: 152. Ошибок: 0.
+
+Версии: 44-ФЗ ТФФ 16.2 / схемы 16.2.6.9; 223-ФЗ 16.2; ГИС НР 8.1.0; ЭМ 1.0.0
+Сайт: www.zakupki.gov.ru | int.zakupki.gov.ru | int44-ttls-cert.zakupki.gov.ru
+
+------------------------------------------------------------
+КРАТКИЙ ПЕРЕБОР БЛОКОВ
+------------------------------------------------------------
+
+1. 44 фз/ — сбор по 44-ФЗ (SOAP, getDocs, выгрузки, XSD/WSDL)
+2. Требования… 223-ФЗ 16/ — альбом ТФФ 223 (PDF→txt), REST/HTTPS
+3. Интеграционные схемы 223-ФЗ 16.2/ — XSD сущностей 223
+4. Альбом ТФФ ГИС НР 8.1.0/ — JWT-события площадок (не реестр)
+5. АТФФ ЭМ_ЕИС_v1_0_0/ — электронные магазины ГИС НР
+6. HUMAN_… / AGENT_… — выжимки для человека и AI
+
+------------------------------------------------------------
+ПОЛНЫЙ КАТАЛОГ
+------------------------------------------------------------
+
+## (корень info)  (2 файлов)
+
+- [.md] AGENT_EIS_INTEGRATION.md.txt
+    Техническая инструкция для AI: интеграция и сбор  (~14 KB)
+- [.md] HUMAN_EIS_OVERVIEW.md.txt
+    Краткий обзор ЕИС для человека (44/223, сбор данных)  (~4 KB)
+
+## 44 фз  (69 файлов)
+
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/ЕИС. Альбом ТФФ_16.2.docx.txt
+    Главный альбом ТФФ 44-ФЗ 16.2: транспорт, адреса, сервисы  (~389 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 1.docx.txt
+    Приложение 1. Описание типов данных, используемых при описании полей документов, состав XML-файла выгрузки, протоколов загрузки информации и справочной информации  (~385 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 10.docx.txt
+    Приложение 10 Структура XML-документов, передаваемых и принимаемых согласно Закону № 504-ФЗ  (~536 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 11.docx.txt
+    Приложение 11 Структура XML-документов реестра проектов контрактов  (~1150 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 12.docx.txt
+    Приложение 12. Структура XML-документов сведений о лимитах бюджетных обязательств (ЛБО), загружаемых из региональных систем финансового учета, реестра планов-графиков закупок с 01.  (~110 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 13.docx.txt
+    Приложение 13. Структура XML-документов, передаваемых и принимаемых по оптимизированным закупкам  (~1398 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 14.docx.txt
+    Приложение 14 Структура XML-документов, передаваемых и принимаемых в части формирования сведений реестра контрактов и реестра независимых гарантий  (~1286 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 15.docx.txt
+    Приложение 15 Структура XML-документов в части запросов и ответов, передаваемых и принимаемых в рамках передачи из ЕИС в РИС размещенной информации с использованием очереди отдачи,  (~93 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 16.docx.txt
+    Приложение 16. Структура XML-документов в части запросов и ответов, передаваемых и принимаемых в рамках передачи из ЕИС в ВБС информации с использованием очереди отдачи, в части фи  (~94 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 17.docx.txt
+    Приложение 17. Структура XML-документов в части запросов и ответов, передаваемых и принимаемых в рамках сервисов отдачи документов из хранилища документов ЕИС  (~184 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 18.docx.txt
+    Приложение 18. Содержимое некоторых справочников, критически важных для интеграционных взаимодействий ЕИС  (~471 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 2.docx.txt
+    Приложение 2. Структура XML-документов реестра жалоб, реестра результатов контроля, реестров плановых и внеплановых проверок, реестра закупок, реестра планов-графиков, реестра недо  (~1085 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 3.docx.txt
+    Приложение 3. Структура XML-документов извещений о проведении закупок  (~1352 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 4.docx.txt
+    Приложение 4. Структура XML-документов протоколов проведения закупки  (~1132 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 5.docx.txt
+    Приложение 5. Структура XML-документов прочих документов закупки  (~109 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 6.docx.txt
+    Приложение 6. Описание приема файлов из внешних систем в файловое хранилище ЕИС  (~19 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 7.docx.txt
+    Приложение 7. Структура XML-документов реестра дополнительной информации о закупках, контрактах, библиотеки типовых контрактов, подсистемы размещения запросов цен, подсистемы разме  (~482 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 8.docx.txt
+    Приложение 8. Структура xml-документов, передаваемых и принимаемых в рамках контроля по части 5 статьи 99 44-ФЗ  (~190 KB)
+- [.docx] 44 фз/Альбом ТФФ 16.2.6.9/Приложение 9.docx.txt
+    Приложение 9. Структура XML-документов, передаваемых и принимаемых согласно ПП РФ № 615  (~270 KB)
+- [.docx] 44 фз/Интеграционные контроль и алгоритмы РК 16.2.5.docx.txt
+    Контроль и алгоритмы реестра контрактов  (~7070 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/BaseTypes.xsd.txt
+    <!-- BASE_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~262 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/CommonTypes.xsd.txt
+    <!-- COMMON_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~678 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/docs-https-api.xsd.txt
+    <!-- EIS docs-https-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~29 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/docs-ws-api.xsd.txt
+    <!-- EIS docs-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~41 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/eis-fs-ws-api.xsd.txt
+    <!-- EIS FILESTORE API Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~22 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/eisSignIncoming.xsd.txt
+    <!-- EIS EIS_SIGN_INCOMING Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~30 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/eisSigningSOAPMessages.xsd.txt
+    <!-- EIS EIS_SIGNING_SOAP_MESSAGES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~7 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/fcsExport.xsd.txt
+    XSD выгрузок 44-ФЗ  (~171 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/fcsExtegration.xsd.txt
+    <!-- EIS FCS_EXTEGRATION Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~52 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/fcsIntegration.xsd.txt
+    XSD интеграции 44-ФЗ  (~214 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/fcsPrintForm.xsd.txt
+    <!-- EIS FCS_PRINTFORM Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~126 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsIndividualPerson/getDocsIP-ws-api.xsd.txt
+    <!-- EIS getDocsOrganization-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~30 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsIndividualPerson/WSDL/WebServiceGetDocsIP.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ip="http://zakupki.gov.ru/fz44/get-docs-ip/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl  (~5 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsLegalEntity/getDocsLE-ws-api.xsd.txt
+    <!-- EIS getDocsOrganization-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~31 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsLegalEntity/WSDL/WebServiceGetDocsLE.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:le="http://zakupki.gov.ru/fz44/get-docs-le/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl  (~5 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsMIS/getDocsMIS-ws-api.xsd.txt
+    <!-- EIS getDocsMIS-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~105 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsMIS/WSDL/WebServiceGetDocsMis.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mis="http://zakupki.gov.ru/fz44/get-docs-mis/ws" xmlns:soap="http://schemas.xmlsoap.org/ws  (~12 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsOrganization/getDocsOrganization-ws-api.xsd.txt
+    <!-- EIS getDocsOrganization-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~31 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsOrganization/WSDL/WebServiceGetDocsOrg.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:org="http://zakupki.gov.ru/fz44/get-docs-org/ws" xmlns:soap="http://schemas.xmlsoap.org/ws  (~5 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsRIS/getDocsRIS-ws-api.xsd.txt
+    <!-- EIS getDocsRIS-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~40 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/GetDocsWS/GetDocsRIS/WSDL/WebServiceGetDocsRis.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ris="http://zakupki.gov.ru/fz44/get-docs-ris/ws" xmlns:soap="http://schemas.xmlsoap.org/ws  (~8 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/Integration615Types.xsd.txt
+    <!-- EIS INTEGRATION_615_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~247 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationCETypes.xsd.txt
+    <!-- EIS INTEGRATION_UR_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~155 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationCPTypes.xsd.txt
+    <!-- EIS INTEGRATION_CP_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~851 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationEATypes.xsd.txt
+    <!-- EIS INTEGRATION_EA_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~23 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationEPTypes.xsd.txt
+    <!-- EIS INTEGRATION_EP_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~1186 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationKOTypes.xsd.txt
+    <!-- EIS INTEGRATION_KO_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~113 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationPFTypes.xsd.txt
+    <!-- EIS INTEGRATION_SM_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~4 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationSMTypes.xsd.txt
+    <!-- EIS INTEGRATION_SM_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~56 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationTPTypes.xsd.txt
+    <!-- EIS INTEGRATION_TP_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~132 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationTypes.xsd.txt
+    Основные типы интеграции 44-ФЗ  (~3695 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/IntegrationURTypes.xsd.txt
+    <!-- EIS INTEGRATION_UR_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~31 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/lkp-eisPrintForm.xsd.txt
+    <!-- LKP-EIS_PRINTFORM Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~8 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/queue-ws-api.xsd.txt
+    <!-- EIS queue-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~9 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/QueueVBS/IntegrationVBSTypes.xsd.txt
+    <!-- EIS INTEGRATION_VBS_TYPES Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~15 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/QueueVBS/queue-vbs-ws-api.xsd.txt
+    <!-- EIS queue-vbs-ws-api Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~15 KB)
+- [.xsd] 44 фз/Схемы 16.2.6.9 итерация 1/QueueVBS/vbsExport.xsd.txt
+    <!-- EIS FCS_EXPORT Integration Scheme, version 16.2.6.9, create date 10.08.2026 -->  (~4 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/QueueVBS/WSDL/WebServiceQueueVBS.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:q="http://zakupki.gov.ru/fz44/queue-vbs/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/so  (~2 KB)
+- [.txt] 44 фз/Схемы 16.2.6.9 итерация 1/what is new.txt.txt
+    Версия 16.2.6.9  (~15 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/IncomingWebService.wsdl.txt
+    <wsdl:definitions xmlns="http://zakupki.gov.ru/oos/wsIncoming/service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl  (~4 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/IntegrationService.wsdl.txt
+    <wsdl:definitions xmlns="http://zakupki.gov.ru/oos/integration/service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsd  (~7 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/WebServiceDocsKO.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/fz44/ws/priz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/  (~2 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/WebServiceDocsRK.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/fz44/ws/priz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/  (~2 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/WebServiceDocsRNP.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/fz44/ws/priz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/  (~1 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/WebServiceDocsROKO.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/fz44/ws/priz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/  (~2 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/WebServiceDocsRPG.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/fz44/ws/priz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/  (~2 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/WebServiceDocsUnfairSupplier2022.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/fz44/ws/priz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/  (~1 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/WebServiceQueue.wsdl.txt
+    <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:q="http://zakupki.gov.ru/fz44/queue/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"  (~2 KB)
+- [.wsdl] 44 фз/Схемы 16.2.6.9 итерация 1/WSDL/wsEisFileStorageIncoming.wsdl.txt
+    <!-- version 11.2, create date 23.03.2021 -->  (~3 KB)
+
+## Интеграционные схемы 223-ФЗ 16.2  (38 файлов)
+
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/agencyBlockInfo.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/agencyBlockInfo/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" targe  (~2 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/agencyRegistration.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/agencyRegistration/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" ta  (~1 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/agencyRelation.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~10 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/complaint.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/complaint/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" targetNames  (~50 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/conclusion.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/conclusion/1"  (~23 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/contract.xsd.txt
+    XSD договоров 223-ФЗ  (~181 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/customerAccredited.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/customerAccredited/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" ta  (~3 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/customerListInfo.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/customerListInfo/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" targ  (~12 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/customerRegistry.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/customerRegistry/1"  (~27 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/decisionSuspension.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/decisionSuspension/1"  (~8 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/detachedAgencyPurchaseRights.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/detachedRights/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" target  (~19 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/disagreementProtocol.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/disagreementProtocol/1"  (~14 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/dishonestSupplier.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~58 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/ecp-packet.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  (~11 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/ecp-packetSpec.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  (~3 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/exclusion.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  (~11 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/integration.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~6 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/machineryListInfo.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/machineryListInfo/1"  (~8 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/missedNotice.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/missedNotice/1"  (~5 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/notificationIssue.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/notificationIssue/1"  (~11 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/orderClause.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~27 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/poll-service.xsd.txt
+    <xs:schema xmlns="http://zakupki.gov.ru/oos/polls/rest/api/1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://zakupki.gov.ru/oos/polls/rest/  (~6 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/purchase.xsd.txt
+    XSD извещений/закупок 223-ФЗ  (~481 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/purchasePlan.xsd.txt
+    XSD планов закупок 223-ФЗ  (~92 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/purchasePlanAdditionalPosition.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~2 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/purchasePlanProject.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~3 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/purchasePlanProjectAdditionalPosition.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~2 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/purchasePlanUpdatePosition.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~7 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/reference.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~97 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/rejectGuarantee.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/guarantee/1"  (~63 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/revenue.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  (~27 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/stopCommodity.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/stopCommodity/1"  (~6 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/typalOrderClause.xsd.txt
+    <!-- edited with XMLSpy v2007 (http://www.altova.com) by Alexander (Lanit) -->  (~13 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/Types.xsd.txt
+    <!-- edited with XMLSpy v2008 (http://www.altova.com) by A (A) -->  (~276 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/userBlockInfo.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/userBlockInfo/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" targetN  (~2 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/userRegistration.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://zakupki.gov.ru/223fz/agencyRegistration/1" xmlns:t="http://zakupki.gov.ru/223fz/types/1" ta  (~1 KB)
+- [.xsd] Интеграционные схемы 223-ФЗ 16.2/webRequest.xsd.txt
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  (~109 KB)
+- [.txt] Интеграционные схемы 223-ФЗ 16.2/Изменения v_16.2.txt.txt
+    Изменения:  (~1 KB)
+
+## Альбом ТФФ ГИС НР 8.1.0  (32 файлов)
+
+- [.xlsx] Альбом ТФФ ГИС НР 8.1.0/108520020_Форма ПП.xlsx.txt
+    Наименование поставщика:  (~1 KB)
+- [.xsd] Альбом ТФФ ГИС НР 8.1.0/nrg_v8_0_0.xsd.txt
+    <!-- edited with XMLSpy v2022 (x64) (http://www.altova.com) by UserName (Topcase) -->  (~1818 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/ГИС_НР_АТФФ_v8_1_0.docx.txt
+    Альбом ТФФ ГИС НР 8.1.0 — JWT-события ЭТП↔ЕИС  (~67 KB)
+- [.xlsx] Альбом ТФФ ГИС НР 8.1.0/Заполнение JWT события версии 3a.xlsx.txt
+    Наименование	Код события	Номер лота (lot)	IP адрес (IP)	Цена (prc)	Вложения (att)	Инициатор	Процесс  (~11 KB)
+- [.xlsx] Альбом ТФФ ГИС НР 8.1.0/Заполнение JWT_v8_1_0.xlsx.txt
+    Приложение 3	События взаимодействия  (~115 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 01. Архивные события с 01.01.2023.docx.txt
+    Приложение 1  (~29 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 02. КИ и статусы процедур.docx.txt
+    Приложение 2  (~9 KB)
+- [.xlsx] Альбом ТФФ ГИС НР 8.1.0/Приложение 02. КИ и статусы процедур.xlsx.txt
+    Код	Тег (Конф. инф-ция)	Наименование тега	Категория КИ (атрибут «sl»)*  (~61 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 03. События взаимодействия (квитки).docx.txt
+    Приложение 3  (~32 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 04. Состав и структура вложений.docx.txt
+    Приложение 4  (~5 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 05. События, предшествующие подаче заявки.docx.txt
+    Приложение 5  (~100 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 06. Аукцион и конкурс МСП 223-ФЗ.docx.txt
+    Приложение 6  (~301 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 07. ЗК и ЗП МСП 223-ФЗ.docx.txt
+    Приложение 7  (~170 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 08. ЗК 44-ФЗ.docx.txt
+    Приложение 8  (~123 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 09. Закупка по ч.12 ст.93 44-ФЗ.docx.txt
+    Приложение 9  (~95 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 10. ЭА 44-ФЗ.docx.txt
+    Приложение 10  (~166 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 11. ЭОК 44-ФЗ.docx.txt
+    Приложение 11  (~176 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 12. Заключение контракта (ЕИС) 44-ФЗ.docx.txt
+    Приложение 12  (~49 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 13. Заключение контракта (ЭТП) 44-ФЗ.docx.txt
+    Приложение 13  (~114 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 14. Электронное актирование (ЕИС).docx.txt
+    Приложение 14  (~52 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 15. Электронное обжалование (ЕИС).docx.txt
+    Приложение 15  (~31 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 16. Односторонний отказ от исполнения контракта и претензии, РНП (ЕИС).docx.txt
+    ТРЕБОВАНИЯ К ФОРМАТАМ ФАЙЛОВ  (~162 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 17. ЗЭА и ЗЭК 44-ФЗ.docx.txt
+    Приложение 17  (~427 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 18. Состав и типы данных БО.docx.txt
+    ФЕДЕРАЛЬНОЕ КАЗНАЧЕЙСТВО  (~14 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 19. Состав и типы данных ДО.docx.txt
+    ФЕДЕРАЛЬНОЕ КАЗНАЧЕЙСТВО  (~15 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 20. Состав и типы данных РСКП.docx.txt
+    ТРЕБОВАНИЯ К ФОРМАТАМ ФАЙЛОВ  (~21 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 21. Заключение контракта с ед. поставщиком (ЕИС) 44-ФЗ.docx.txt
+    Приложение 21  (~78 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 22. ПП РФ № 615.docx.txt
+    Приложение 22  (~272 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 23. Заключение электрон. доп. соглашений (ЕИС) 44-ФЗ.docx.txt
+    Приложение 23  (~58 KB)
+- [.docx] Альбом ТФФ ГИС НР 8.1.0/Приложение 24. МЧД (ЕИС).docx.txt
+    ФЕДЕРАЛЬНОЕ КАЗНАЧЕЙСТВО  (~12 KB)
+- [.txt] Альбом ТФФ ГИС НР 8.1.0/Список изменений 2026.txt.txt
+    2026  (~1 KB)
+- [.xlsx] Альбом ТФФ ГИС НР 8.1.0/Список Приложений к Таблице 1 – Перечень адресов для передачи JWT.xlsx.txt
+    № п/п	Тип способа закупок	Адрес	Приложение АТФФ	Примечание  (~1 KB)
+
+## АТФФ ЭМ_ЕИС_v1_0_0  (7 файлов)
+
+- [.xsd] АТФФ ЭМ_ЕИС_v1_0_0/nrg_z_v1_0_0.xsd.txt
+    <!-- edited with XMLSpy v2022 (x64) (http://www.altova.com) by UserName (Topcase) -->  (~367 KB)
+- [.docx] АТФФ ЭМ_ЕИС_v1_0_0/ГИС НР_АТФФ_ЭМ_v1_0_0.docx.txt
+    АТФФ электронных магазинов ГИС НР  (~24 KB)
+- [.xlsx] АТФФ ЭМ_ЕИС_v1_0_0/Заполнение JWT ЭМ.xlsx.txt
+    Приложение 1	События взаимодействия  (~20 KB)
+- [.docx] АТФФ ЭМ_ЕИС_v1_0_0/Приложение 01. События взаимодействия (квитки).docx.txt
+    Приложение 1  (~5 KB)
+- [.docx] АТФФ ЭМ_ЕИС_v1_0_0/Приложение 02. Состав и типы данных_События взаимодействия.docx.txt
+    Приложение 2  (~447 KB)
+- [.docx] АТФФ ЭМ_ЕИС_v1_0_0/Приложение 03. КИ и статусы процедур.docx.txt
+    Приложение 3  (~1 KB)
+- [.xlsx] АТФФ ЭМ_ЕИС_v1_0_0/Приложение 03. КИ и статусы процедур.xlsx.txt
+    Код	Тег (Конф. инф-ция)	Наименование тега	Категория КИ (атрибут «sl»)*  (~1 KB)
+
+## Требования к форматам и файлам 223-ФЗ 16  (4 файлов)
+
+- [.pdf] Требования к форматам и файлам 223-ФЗ 16/Приложение_1_Общая_часть_ТФФ_223_ФЗ_v_16_2.pdf.txt
+    223-ФЗ: общая часть полей/структуры  (~4395 KB)
+- [.pdf] Требования к форматам и файлам 223-ФЗ 16/Приложение_2_Извещения_о_закупках_ТФФ_223_ФЗ_v_16_2.pdf.txt
+    223-ФЗ: извещения о закупках  (~1514 KB)
+- [.pdf] Требования к форматам и файлам 223-ФЗ 16/Приложение_3_Протоколы_закупок_ТФФ_223_ФЗ_v_16_2.pdf.txt
+    223-ФЗ: протоколы закупок  (~4440 KB)
+- [.pdf] Требования к форматам и файлам 223-ФЗ 16/Требования_к_форматам_и_файлам_223_ФЗ_v_16_2.pdf.txt
+    ФЕДЕРАЛЬНОЕ КАЗНАЧЕЙСТВО (КАЗНАЧЕЙСТВО РОССИИ)  (~208 KB)
+
+------------------------------------------------------------
+ПРИМЕЧАНИЯ
+------------------------------------------------------------
+- ZIP-архивы не копировались — только распакованное содержимое.
+- Имя файла сохраняет исходное расширение: Приложение 02.docx.txt
+  и Приложение 02.xlsx.txt — без коллизий.
+- Крупные XSD оставлены целиком как текст (удобно для поиска в git).
